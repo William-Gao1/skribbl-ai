@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-bottom: 1em;
   user-select: none;
+  text-align: center;
 }
 
 .wordDisplay {

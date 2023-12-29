@@ -15,7 +15,9 @@
 }
 
 .headerLogo {
-  position: absolute;
-  left: 50%;
-  transform: translate(-75%, 0)
+  margin-left: auto; 
+  margin-right: auto;
+  width: 4em;
+  left: 0; 
+  right: 0;
 }
