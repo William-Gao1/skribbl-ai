@@ -86,17 +86,19 @@ export const useDraw = () => {
     }
   }
 
-  const handleEndStroke = useCallback(() => {
-    if (isYourTurnRef.current) {
+  const handleEndStroke = (e) => {
+    e.preventDefault()
+    if (e.button === 0 && isYourTurnRef.current) {
       currentStroke.current = []
       setIsDrawing(false)
       socket.emit("endDrawStroke")
     }
-  }, [isYourTurnRef])
+  }
 
   useEffect(() => {
-    handleEndStroke()
-  }, [isYourTurnRef, handleEndStroke])
+    currentStroke.current = []
+    setIsDrawing(false)
+  }, [isYourTurnRef])
 
   const handleUndo = (e) => {
     e.preventDefault()
