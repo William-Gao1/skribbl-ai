@@ -36,7 +36,7 @@ const startLoop = (io) => {
         if (prediction === room.currentWord.replace("-", "")) {
           io.in(room.roomCode).emit("newMessage", `Oh I know, it's ${indefinite} ${prediction}`, AI_DISPLAY_NAME)
           io.in(room.roomCode).emit("newMessage", `Humans Lose! The correct word was ${prediction}`, null)
-          nextRound(room.roomCode, io)
+          goToNextRound(room.roomCode, io)
         } else {
           io.in(room.roomCode).emit("newMessage", `I think it's ${indefinite} ${prediction}`, AI_DISPLAY_NAME)
         }
