@@ -44,6 +44,8 @@ module.exports = (io) => {
     if (!inRoom) {
       callback({success: false, message: "Player not in room"})
       return
+    } if (!message) {
+      return
     }
 
     const room = getRoomByRoomCode(roomCode)

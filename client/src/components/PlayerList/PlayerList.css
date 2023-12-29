@@ -11,16 +11,16 @@
 
 .oddPlayer {
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding-left: 10px;
   height: 3em;
-  background-color: lightgray;  
+  background-color: #dae0e0;  
 }
 
 .evenPlayer {
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding-left: 10px;
   height: 3em;
   background-color: white;
 }

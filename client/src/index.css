@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./resources/background.avif");
+  background-position: 10px 40px;
   height: 100%;
 }
 

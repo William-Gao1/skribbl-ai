@@ -16,10 +16,13 @@ module.exports = (io) => {
     if (inRoom) {
       callback({success: false, message: "Cannot create room when player is already in room", room: null})
       return
+    } else if (!displayName.trim()) {
+      callback({success: false, message: "Cannot have empty username"})
+      return
     } else if (displayName === AI_DISPLAY_NAME) {
       callback({success: false, message: "You cannot name yourself that"})
       return
-    }
+    } 
 
     const roomCode = createRoom(playerId, displayName)
 

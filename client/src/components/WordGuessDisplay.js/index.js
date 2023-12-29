@@ -25,7 +25,7 @@ const WordGuessDisplay = ({skipWord}) => {
   }
   
   return (
-    <div className="wordGuessDisplayContainer" style={{marginTop: word.word ? "-8em" : "4em"}}>
+    <div className="wordGuessDisplayContainer" style={{marginTop: word.word ? "-8em" : "-5.75em"}}>
       <div>
         { word.word ? <span className="wordDisplay">{word.word}</span> : generateWordBlanks(word.numLetters, word.spaceLocations)}
       </div>

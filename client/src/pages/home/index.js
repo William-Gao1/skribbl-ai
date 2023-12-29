@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { LiaRedoAltSolid } from "react-icons/lia";
 
 import { generate } from 'silly-animal';
 
@@ -39,7 +40,11 @@ const Home = () => {
               placeholder="Enter your name"
               value={userNameDraft}
               onChange={(e) => setUserNameDraft(e.target.value)}
+              aria-describedby="regenerateUsernameButton"
             />
+            <Button id="regenerateUsernameButton" onClick={() => setUserNameDraft(generate('-'))}>
+              <LiaRedoAltSolid />
+            </Button>
           </InputGroup>
           <InputGroup className="homeActionsButtonGroup">
             <Button onClick={() => createRoom(userNameDraft)} className="createRoomButton">

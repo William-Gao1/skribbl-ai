@@ -47,3 +47,13 @@
   border-color: mediumslateblue;
   font-weight: bold;
 }
+
+.createRoomButton:hover {
+  background-color: #2db2d6;
+  border-color: #2db2d6;
+}
+
+.joinRoomButton:hover {
+  background-color: #6d5edb;
+  border-color: #6d5edb;
+}
