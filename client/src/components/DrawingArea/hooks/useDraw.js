@@ -95,7 +95,6 @@ export const useDraw = () => {
   }, [isYourTurnRef])
 
   useEffect(() => {
-    console.log("here")
     handleEndStroke()
   }, [isYourTurnRef, handleEndStroke])
 

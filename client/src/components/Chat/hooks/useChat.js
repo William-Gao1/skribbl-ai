@@ -6,7 +6,7 @@ import { socket } from "../../../common/socket"
 import { useRoomRefs } from "../../../pages/room/hooks/useRoomRefs"
 
 const useChat = () => {
-  const { userNameRef, setMessages } = useRoomRefs()
+  const { userNameRef, setMessages, } = useRoomRefs()
 
   useEffect(() => {
     socket.on("newMessage", (message, displayName) => {

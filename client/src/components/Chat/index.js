@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -12,7 +12,10 @@ import "./Chat.css"
 
 const Chat = () => {
   const [messageDraft, setMessageDraft] = useState("")
-  
+  const outerDiv = useRef(null);
+  const innerDiv = useRef(null);
+  const prevInnerDivHeight = useRef(null);
+
   const { messages } = useRoomRefs()
   const { submitMessage } = useChat()
 
@@ -22,16 +25,44 @@ const Chat = () => {
     setMessageDraft("")
   }
 
+  useEffect(() => {
+    const outerHeight = outerDiv.current.clientHeight;
+    const innerHeight = innerDiv.current.clientHeight;
+    const outerDivScrollTop = outerDiv.current.scrollTop;
+
+    if (
+      !prevInnerDivHeight.current ||
+      outerDivScrollTop === prevInnerDivHeight.current - outerHeight
+    ) {
+      outerDiv.current.scrollTo({
+        top: innerHeight - outerHeight,
+        left: 0,
+        behavior: "smooth"
+      })
+    }
+    prevInnerDivHeight.current = innerHeight;
+  }, [messages]);
+
   return (
-    <div className="chatContainer">
+    <div 
+      className="chatContainer"
+      style={{
+        position: "relative",
+        height: "100%"
+      }}
+    >
       {/* Message chat history */}
-      <div className="chatLog">
-        {messages.map(({message, displayName}, index) => (
-          <div key={index} className={`${index % 2 === 0 ? 'even' : 'odd'}Chat`}>
-            {displayName ? `${displayName}: ${message}` : <b>{message}</b>} 
-          </div>
-        ))}
+      <div className="chatLog" ref={outerDiv}>
+        <div ref={innerDiv}>
+          {messages.map(({message, displayName}, index) => (
+            <div key={index} className={`${index % 2 === 0 ? 'even' : 'odd'}Chat`}>
+              {displayName ? `${displayName}: ${message}` : <b>{message}</b>} 
+            </div>
+          ))}
+        </div>
       </div>
+
+      
 
       {/* Send message input box */}
       <Form onSubmit={sendMessage}>

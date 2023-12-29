@@ -148,6 +148,7 @@ const goToNextRound = (roomCode, io, changePlayer = true) => {
   room.currentWord = pickRandomWord()
   room.strokes = []
   room.hasChangedSinceLastPrediction = false
+  room.drawing = false
 
   io.to(room.roomCode).emit("newRound", nextDrawer, room.currentWord.length, findSpaceIndices(room.currentWord))
   io.to(room.members[nextDrawer].id).emit("yourTurn", nextDrawer, room.currentWord.length, room.currentWord, findSpaceIndices(room.currentWord))
