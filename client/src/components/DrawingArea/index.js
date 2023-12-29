@@ -1,17 +1,21 @@
 import { motion } from 'framer-motion';
+import Button from 'react-bootstrap/Button';
 
 import { useRoomRefs } from '../../pages/room/hooks/useRoomRefs';
 import { useDraw } from './hooks/useDraw';
 
-const CANVAS_SIZE = {width: 750, height: 750}
+import './DrawingArea.css'
+
+const CANVAS_SIZE = {width: 550, height: 550}
 
 const DrawingArea = () => {
   const { canvasRef, isYourTurnRef } = useRoomRefs()
   const { handleStartStroke, handleEndStroke, handleMouseMove, handleUndo } = useDraw()
   return (
-    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+    <div className="drawingAreaContainer">
       <motion.canvas
         ref={canvasRef}
+        className="drawingArea"
         width={CANVAS_SIZE.width}
         height={CANVAS_SIZE.height}
         dragElastic={0}
@@ -19,9 +23,12 @@ const DrawingArea = () => {
         onMouseDown={handleStartStroke}
         onMouseUp={handleEndStroke}
         onMouseMove={handleMouseMove}
-        style={{borderStyle: "solid", margin: "0 3em"}}
       />
-      {isYourTurnRef.current ? <button style={{marginTop: 10, width: 100}} onClick={handleUndo}>Undo</button> : null}
+      {isYourTurnRef.current ? (
+        <Button className="undoButton" onClick={handleUndo}>
+          Undo
+        </Button>
+      ) : null}
     </div>
     
   )

@@ -1,0 +1,49 @@
+.homeContainer {
+  height: 100%;
+}
+
+.logoControlsContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -70%);
+}
+
+.homeControlsContainer {
+  background-color: midnightblue;
+  padding: 2em;
+  border-radius: 20px;
+}
+
+.userNameInput {
+  max-width: 300px;
+  height: 3em;
+  font-size: 20px;
+  text-align: center;
+}
+
+.homeActionsButtonGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createRoomButton {
+  width: 100%;
+  margin-top: 1em;
+  height: 3em;
+  background-color: darkturquoise;
+  border-color: darkturquoise;
+  font-weight: bold;
+}
+
+.joinRoomButton {
+  width: 100%;
+  margin-top: 1em;
+  height: 3em;
+  background-color: mediumslateblue;
+  border-color: mediumslateblue;
+  font-weight: bold;
+}

@@ -1,0 +1,21 @@
+.headerContainer {
+  margin-bottom: 1em;
+  background-color: lightblue;
+  height: 4.8em;
+  line-height: 4.8em;
+  display: flex;
+  justify-content: space-between;
+  min-width: 1000px;
+}
+
+.roomCodeDisplay {
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.headerLogo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-75%, 0)
+}

@@ -5,6 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./resources/background.avif");
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+@font-face {
+  font-family: "LogoFont";   /*Can be any text*/
+  src: local("LogoFont"),
+    url("./resources/logofont.ttf") format("truetype");
 }
 
 code {

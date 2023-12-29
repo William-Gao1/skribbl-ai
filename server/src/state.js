@@ -31,7 +31,7 @@ const generateRoomCode = () => {
     code = randomBytes(codeLength / 2).toString("hex");
   } while (code in rooms)
   
-  return code
+  return code.toUpperCase()
 }
 
 const getPlayer = (playerId) => {
@@ -43,7 +43,7 @@ const getPlayer = (playerId) => {
 }
 
 const getRoomByRoomCode = (roomCode) => {
-  const room = rooms[roomCode]
+  const room = rooms[roomCode.toUpperCase()]
 
   return room
 }

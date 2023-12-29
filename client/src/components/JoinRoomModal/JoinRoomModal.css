@@ -1,0 +1,11 @@
+.modalBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.roomCodeInput {
+  max-width: 300px
+}

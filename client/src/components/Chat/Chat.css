@@ -1,0 +1,38 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.chatLog {
+  border: solid;
+  width: 300px;
+  height: 510px;
+  word-wrap: break-word;
+  overflow: scroll;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 4px
+}
+
+.evenChat {
+  background-color: white;
+}
+
+.oddChat {
+  background-color: lightgray;
+}
+
+.submitChatMessage {
+  margin-top: 0.5em;
+}
+
+#send-button {
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+}
+
+#send-button:hover {
+  background-color: #5782cf;
+  border-color: #5782cf;
+}

@@ -1,0 +1,30 @@
+.playerList {
+  border: solid;
+  min-width: 200px;
+  height: 557px;
+  word-wrap: break-word;
+  margin-left: auto;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 4px;
+}
+
+.oddPlayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  background-color: lightgray;  
+}
+
+.evenPlayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  background-color: white;
+}
+
+.youPlayer {
+  color: deepskyblue
+}

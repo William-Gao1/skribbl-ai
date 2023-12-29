@@ -1,0 +1,10 @@
+.wordGuessDisplayContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  user-select: none;
+}
+
+.wordDisplay {
+  font-size: 50px;
+}

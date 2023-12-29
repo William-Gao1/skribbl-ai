@@ -1,17 +1,25 @@
-const express = require("express");
-const { createServer } = require("http");
 const { Server } = require("socket.io");
+const { instrument } = require("@socket.io/admin-ui");
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
 
 const { playerMiddleware } = require('./src/middleware')
-
 
 const { startLoop } = require('./src/prediction')
 
 const PORT = process.env.PORT || 3001;
 
-const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer, { /* options */ });
+app.use(express.static("client/build"))
+
+const io = new Server(server, {
+  wsEngine: require("eiows").Server,
+  cors: {
+    origin: ["https://admin.socket.io"],
+    credentials: true
+  }
+});
 
 const { 
   createRoomHandler, 
@@ -31,9 +39,21 @@ const {
   undoStrokeHandler
 } = require("./src/handlers/gameHandler")(io)
 
+instrument(io, {
+  auth: {
+    type: "basic",
+    username: "admin",
+    password: "$2a$10$Ht6b4gB.s4gN5ZX6Ry6jXuBkFqhIBy.brRfPCntYxqxszmJaHp6/G"
+  },
+  readonly: true
+});
+
 io.on("connection", (socket) => {
   console.log("New connection:", socket.id);
 
+  // remove http request to save memory since we dont need it
+  socket.request = null;
+  
   socket.use(playerMiddleware(socket))
 
   socket.on("draw", drawHandler)
@@ -52,6 +72,6 @@ io.on("connection", (socket) => {
 
 startLoop(io)
 
-httpServer.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

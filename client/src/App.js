@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Home from "./pages/home/Home";
-import Room from "./pages/room/Room";
+import Home from "./pages/home";
+import Room from "./pages/room";
 
 import { socket } from "./common/socket"
 import { useRoomRefs } from "./pages/room/hooks/useRoomRefs";
@@ -28,8 +28,9 @@ function App() {
   })
 
   return (
-    <div>
-      <ToastContainer autoClose={2000}/>
+    <div style={{height: "100%"}}>
+
+    <ToastContainer autoClose={2000} style={{marginTop: inRoom ? "4.8em": "0"}}/>
       {inRoom ? <Room /> : <Home />}
     </div>
       

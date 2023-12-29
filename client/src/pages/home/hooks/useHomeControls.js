@@ -34,9 +34,10 @@ const useHomeControls = () => {
       toast(message, {type: "error"})
     }
   }
-  const joinRoom = (submitUserName, submitRoomCode) => {
+  const joinRoom = (submitUserName, submitRoomCode, callback) => {
     socket.emit("joinRoom", submitRoomCode, submitUserName, ({success, message, room}) => {
       handleRoomResponse(success, message, room, submitUserName)
+      callback(success)
     })
   }
 

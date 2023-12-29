@@ -25,7 +25,7 @@ module.exports = (io) => {
 
     socket.join(roomCode)
 
-    callback({success: true, message: "roomCreated", room: getRoomDataForClient(roomCode)})
+    callback({success: true, message: "Room created", room: getRoomDataForClient(roomCode)})
   }
 
   const joinRoomHandler = function (roomCode, displayName, callback) {
@@ -82,13 +82,14 @@ module.exports = (io) => {
   }
 
   const disconnectHandler = function () {
+    console.log("disconnect")
+
     const socket = this
     const player = getPlayer[socket.id]
     if (player) {
       removePlayerFromRoom(playerId, socket, io)
     }
 
-    console.log("disconnect")
   }
 
   return {

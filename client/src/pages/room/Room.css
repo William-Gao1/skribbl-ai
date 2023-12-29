@@ -1,0 +1,35 @@
+.leaveRoomButton {
+  border-radius: 0;
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+  width: 8em;
+}
+
+.startButton {
+  border-radius: 0;
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+  width: 8em;
+}
+
+.leaveRoomButton:hover {
+  background-color: #5782cf;
+  border-color: #5782cf;
+}
+
+.startButton:hover {
+  background-color: #5782cf;
+  border-color: #5782cf;
+}
+
+.gameContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.drawingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
