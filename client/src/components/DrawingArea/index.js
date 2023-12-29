@@ -10,7 +10,13 @@ const CANVAS_SIZE = {width: 550, height: 550}
 
 const DrawingArea = () => {
   const { canvasRef, isYourTurnRef } = useRoomRefs()
-  const { handleStartStroke, handleEndStroke, handleMouseMove, handleUndo } = useDraw()
+  const { 
+    handleStartStroke, 
+    handleEndStroke, 
+    handleMouseMove, 
+    handleUndo, 
+    handleClear 
+  } = useDraw()
   return (
     <div className="drawingAreaContainer">
       <motion.canvas
@@ -25,9 +31,15 @@ const DrawingArea = () => {
         onMouseMove={handleMouseMove}
       />
       {isYourTurnRef.current ? (
-        <Button className="undoButton" onClick={handleUndo}>
-          Undo
-        </Button>
+        <div className="drawActionButtons">
+          <Button className="undoButton" onClick={handleUndo}>
+            Undo
+          </Button>
+          <Button className="clearButton" onClick={handleClear}>
+            Clear
+          </Button>
+        </div>
+        
       ) : null}
     </div>
     

@@ -36,7 +36,8 @@ const {
   startStrokeHandler,
   endStrokeHandler,
   skipWordHandler,
-  undoStrokeHandler
+  undoStrokeHandler,
+  clearStrokesHandler
 } = require("./src/handlers/gameHandler")(io)
 
 instrument(io, {
@@ -67,6 +68,7 @@ io.on("connection", (socket) => {
   socket.on("startDrawStroke", startStrokeHandler)
   socket.on("endDrawStroke", endStrokeHandler)
   socket.on("undo", undoStrokeHandler)
+  socket.on("clear", clearStrokesHandler)
   socket.on("disconnect", disconnectHandler)
 });
 

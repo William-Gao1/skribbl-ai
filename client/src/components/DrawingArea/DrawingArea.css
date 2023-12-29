@@ -15,4 +15,14 @@
 .undoButton {
   margin-top: 10px;
   width: 100px;
+  margin-right: 1em;
+}
+
+.clearButton {
+  margin-top: 10px;
+  width: 100px;
+}
+
+.drawActionButtons {
+  display: "flex"
 }

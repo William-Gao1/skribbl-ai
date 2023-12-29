@@ -40,6 +40,8 @@ export const useDraw = () => {
       drawStrokes(strokes)
     })
 
+    window.addEventListener("mouseup", handleEndStroke)
+
     return () => {
       socket.off("newDraw")
       socket.off("redraw")
@@ -66,7 +68,7 @@ export const useDraw = () => {
   const handleMouseMove = (e) => {
     e.preventDefault()
     if (!isDrawing || !isYourTurnRef.current) return
-
+    console.log("here")
     const curPoint = getCoordsInDrawingAreaFromEvent(e)
     const prevPoint = currentStroke.current[currentStroke.current.length - 1]
 
@@ -105,11 +107,17 @@ export const useDraw = () => {
     socket.emit("undo")
   }
 
+  const handleClear = (e) => {
+    e.preventDefault()
+    socket.emit("clear")
+  }
+
   return {
     handleStartStroke,
     handleMouseMove,
     handleEndStroke,
     drawStrokes,
-    handleUndo
+    handleUndo,
+    handleClear
   }
 }

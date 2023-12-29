@@ -5,7 +5,8 @@ const {
   draw,
   startStroke,
   endStroke,
-  undoStroke
+  undoStroke,
+  clearStrokes
 } = require('../state')
 
 
@@ -133,6 +134,19 @@ module.exports = (io) => {
     io.in(roomCode).emit("redraw", newStrokes)
   }
 
+  const clearStrokesHandler = function () {
+    const socket = this
+    const { inRoom, roomCode, isDrawing} = socket.player
+
+    if (!inRoom || !isDrawing) {
+      return
+    }
+
+    const newStrokes = clearStrokes(roomCode)
+
+    io.in(roomCode).emit("redraw", newStrokes)
+  }
+
   return {
     startGameHandler,
     messageHandler,
@@ -140,6 +154,7 @@ module.exports = (io) => {
     startStrokeHandler,
     endStrokeHandler,
     skipWordHandler,
-    undoStrokeHandler
+    undoStrokeHandler,
+    clearStrokesHandler
   }
 }

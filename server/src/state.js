@@ -188,6 +188,16 @@ const undoStroke = (roomCode) => {
   return room.strokes
 }
 
+const clearStrokes = (roomCode) => {
+  const room = rooms[roomCode]
+  room.drawing = false
+
+  room.strokes = []
+  room.hasChangedSinceLastPrediction = false
+  
+  return room.strokes
+}
+
 module.exports = {
   AI_DISPLAY_NAME,
   getRooms,
@@ -202,5 +212,6 @@ module.exports = {
   draw,
   startStroke,
   endStroke,
-  undoStroke
+  undoStroke,
+  clearStrokes
 }
