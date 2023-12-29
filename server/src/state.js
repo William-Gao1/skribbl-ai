@@ -155,8 +155,10 @@ const goToNextRound = (roomCode, io, changePlayer = true) => {
 
 const draw = (roomCode, line) => {
   const room = rooms[roomCode]
-  room.strokes[room.strokes.length - 1].push(line.end)
-  room.hasChangedSinceLastPrediction = true
+  if (room.strokes.length > 0) {
+    room.strokes[room.strokes.length - 1].push(line.end)
+    room.hasChangedSinceLastPrediction = true
+  }
 }
 
 const startStroke = (roomCode, startCoord) => {
