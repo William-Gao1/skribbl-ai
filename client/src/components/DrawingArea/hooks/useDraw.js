@@ -5,7 +5,7 @@ import { useCtx } from './useCtx';
 import { socket } from "../../../common/socket"
 
 export const useDraw = () => {
-  const { isYourTurnRef, canvasRef } = useRoomRefs()
+  const { isYourTurnRef, canvasRef, word } = useRoomRefs()
   const ctx = useCtx()
   const [isDrawing, setIsDrawing] = useState(false)
   const currentStrokeStartTime = useRef(0)
@@ -52,6 +52,11 @@ export const useDraw = () => {
     }
   }, [ctx, drawStrokes])
 
+  useEffect(() => {
+    currentStroke.current = []
+    setIsDrawing(false)
+  }, [word])
+
   const getCoordsInDrawingAreaFromEvent = (e) => ({
     x: e.pageX - e.target.offsetLeft,
     y: e.pageY - e.target.offsetTop, 
@@ -94,11 +99,6 @@ export const useDraw = () => {
       socket.emit("endDrawStroke")
     }
   }
-
-  useEffect(() => {
-    currentStroke.current = []
-    setIsDrawing(false)
-  }, [isYourTurnRef])
 
   const handleUndo = (e) => {
     e.preventDefault()

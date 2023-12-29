@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 import { toast } from "react-toastify"
 
@@ -6,10 +6,32 @@ import { socket } from "../../../common/socket"
 import { useRoomRefs } from "../../../pages/room/hooks/useRoomRefs"
 
 const useChat = () => {
-  const { userNameRef, setMessages, } = useRoomRefs()
+  const { userNameRef, setMessages, messages} = useRoomRefs()
+  const outerDiv = useRef(null)
+  const innerDiv = useRef(null)
+  const prevInnerDivHeight = useRef(null);
+  const dummyDiv = useRef(null)
+
+  const isUserScrolledToEnd = () => {
+    const outerHeight = outerDiv.current.clientHeight;
+    const innerHeight = innerDiv.current.clientHeight;
+    const outerDivScrollTop = outerDiv.current.scrollTop;
+
+    const result = !prevInnerDivHeight.current ||
+      prevInnerDivHeight.current < outerHeight ||
+      outerDivScrollTop > prevInnerDivHeight.current - outerHeight - 50
+
+    prevInnerDivHeight.current = innerHeight;
+    return result
+  }
+
+  const scrollDown = () => {
+    dummyDiv.current.scrollIntoView({behavior: "smooth"})
+  }
 
   useEffect(() => {
     socket.on("newMessage", (message, displayName) => {
+      prevInnerDivHeight.current = innerDiv.current.clientHeight;
       setMessages((messages) => [...messages, {message: message, displayName: displayName}])
     })
 
@@ -17,6 +39,12 @@ const useChat = () => {
       socket.off("newMessage")
     }
   })
+
+  useEffect(() => {
+    if (isUserScrolledToEnd()) {
+      scrollDown()
+    }
+  }, [messages])
 
   const submitMessage = (message) => {
     socket.emit("message", message, ({success, message: errorMessage}) => {
@@ -29,7 +57,10 @@ const useChat = () => {
   }
 
   return {
-    submitMessage
+    submitMessage,
+    outerDiv,
+    innerDiv,
+    dummyDiv
   }
 }
 

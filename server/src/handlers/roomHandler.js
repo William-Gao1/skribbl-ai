@@ -34,7 +34,7 @@ module.exports = (io) => {
   const joinRoomHandler = function (roomCode, displayName, callback) {
     const socket = this
     const { playerId } = socket.player
-    
+    roomCode = roomCode.toUpperCase()
     const room = getRoomByRoomCode(roomCode)
 
     if (!room) {
