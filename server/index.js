@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const { playerMiddleware } = require('./src/middleware')
 
 const { startLoop } = require('./src/prediction')
-
+require('./src/python/python')
 const PORT = process.env.PORT || 3001;
 
 app.use(express.static("client/build"))
