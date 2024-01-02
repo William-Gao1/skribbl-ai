@@ -1,0 +1,52 @@
+.createModalBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.selectModelForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modelSelection {
+  width: 200px;
+  height: 50px;
+}
+
+.modelSelectButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectModelText {
+  margin-right: 10px;
+  margin-left: -30px;
+}
+
+.selectDifficultyForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.selectDifficultyText {
+  margin-right: 10px;
+  margin-left: -55px;
+}
+
+.difficultySelection {
+  width: 200;
+  height: 50px;
+}
+
+.difficultySelectButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

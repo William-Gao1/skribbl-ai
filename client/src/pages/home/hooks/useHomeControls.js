@@ -41,8 +41,8 @@ const useHomeControls = () => {
     })
   }
 
-  const createRoom = (submitUserName) => {
-    socket.emit("createRoom", submitUserName, ({success, message, room}) => {
+  const createRoom = (submitUserName, model, difficulty) => {
+    socket.emit("createRoom", submitUserName, model, difficulty, ({success, message, room}) => {
       handleRoomResponse(success, message, room, submitUserName)
     })
   }

@@ -9,7 +9,7 @@ const ROOM_ID_LENGTH = 5
 const words = require("./resources/words.json")
 
 const pickRandomWord = () => {
-  return words[Math.floor(Math.random() * words.length)].replace("-", "");
+  return words[Math.floor(Math.random() * words.length)];
 }
 
 const findSpaceIndices = (word) => {
@@ -52,7 +52,7 @@ const getRooms = () => {
   return rooms
 }
 
-const createRoom = (ownerId, displayName) => {
+const createRoom = (ownerId, displayName, model, difficulty) => {
   const newRoomCode = generateRoomCode()
 
   rooms[newRoomCode] = {
@@ -64,7 +64,9 @@ const createRoom = (ownerId, displayName) => {
     owner: {id: ownerId, displayName: displayName},
     started: false,
     hasChangedSinceLastPrediction: false,
-    drawing: false
+    drawing: false,
+    model: model,
+    difficulty: difficulty
   }
 
   players[ownerId] = {room: newRoomCode, displayName: displayName}
@@ -81,7 +83,8 @@ const getRoomDataForClient = (roomCode) => {
     owner: room.owner,
     started: room.started,
     numLetters: room.currentWord ? room.currentWord.length : 0,
-    spaceIndices: room.currentWord ? findSpaceIndices(room.currentWord) : []
+    spaceIndices: room.currentWord ? findSpaceIndices(room.currentWord) : [],
+    prevAiPredictions: []
   }
 }
 
@@ -149,6 +152,7 @@ const goToNextRound = (roomCode, io, changePlayer = true) => {
   room.strokes = []
   room.hasChangedSinceLastPrediction = false
   room.drawing = false
+  room.prevAiPredictions = []
 
   io.to(room.roomCode).emit("newRound", nextDrawer, room.currentWord.length, findSpaceIndices(room.currentWord))
   io.to(room.members[nextDrawer].id).emit("yourTurn", nextDrawer, room.currentWord.length, room.currentWord, findSpaceIndices(room.currentWord))

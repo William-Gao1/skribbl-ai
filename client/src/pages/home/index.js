@@ -10,6 +10,7 @@ import { generate } from 'silly-animal';
 import useHomeControls from './hooks/useHomeControls';
 import { useRoomRefs } from '../room/hooks/useRoomRefs';
 import JoinRoomModal from '../../components/JoinRoomModal';
+import CreateRoomModal from '../../components/CreateRoomModal';
 import Logo from '../../components/Logo';
 
 import "./Home.css"
@@ -19,6 +20,7 @@ const Home = () => {
   const { createRoom, joinRoom } = useHomeControls()
 
   const [joinRoomModalOpen, setJoinRoomModalOpen] = useState(false)
+  const [createRoomModalOpen, setCreateRoomModalOpen] = useState(false)
   const [userNameDraft, setUserNameDraft] = useState(userNameRef.current || generate('-'))
   
   const joinRoomHandler = (roomCode) => {
@@ -28,9 +30,14 @@ const Home = () => {
       (success) => {if (success) setJoinRoomModalOpen(false)})
   }
 
+  const createRoomHandler = (model, difficulty) => {
+    createRoom(userNameDraft, model, difficulty)
+  }
   return (
     <div className="homeContainer">
       <JoinRoomModal show={joinRoomModalOpen} handleClose={() => setJoinRoomModalOpen(false)} joinRoom={joinRoomHandler}/>
+      <CreateRoomModal show={createRoomModalOpen} handleClose={() => setCreateRoomModalOpen(false)} createRoom={createRoomHandler}/>
+
       <div className="logoControlsContainer">
         <Logo />  
         <div className="homeControlsContainer">
@@ -47,7 +54,7 @@ const Home = () => {
             </Button>
           </InputGroup>
           <InputGroup className="homeActionsButtonGroup">
-            <Button onClick={() => createRoom(userNameDraft)} className="createRoomButton">
+            <Button onClick={() => setCreateRoomModalOpen(true)} className="createRoomButton">
               Create Room
             </Button>
           </InputGroup>

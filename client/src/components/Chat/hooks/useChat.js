@@ -10,7 +10,6 @@ const useChat = () => {
   const outerDiv = useRef(null)
   const innerDiv = useRef(null)
   const prevInnerDivHeight = useRef(null);
-  const dummyDiv = useRef(null)
 
   const isUserScrolledToEnd = () => {
     const outerHeight = outerDiv.current.clientHeight;
@@ -26,8 +25,14 @@ const useChat = () => {
   }
 
   const scrollDown = () => {
-    dummyDiv.current.scrollIntoView({behavior: "smooth"})
-  }
+    const outerHeight = outerDiv.current.clientHeight;
+    const innerHeight = innerDiv.current.clientHeight;
+
+    outerDiv.current.scrollTo({
+      top: innerHeight - outerHeight,
+      left: 0,
+      behavior: "smooth"
+    });  }
 
   useEffect(() => {
     socket.on("newMessage", (message, displayName) => {
@@ -59,8 +64,7 @@ const useChat = () => {
   return {
     submitMessage,
     outerDiv,
-    innerDiv,
-    dummyDiv
+    innerDiv
   }
 }
 

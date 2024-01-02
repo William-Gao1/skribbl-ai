@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
@@ -17,6 +19,11 @@ const Room = () => {
   const { roomOwner, isGameStartedRef } = useRoomRefs()
 
   const { leaveRoom, startGame, skipWord } = useRoomControls()
+
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: "instant"})
+  }, [])
+
   return (
     <>
       <Header actions={(

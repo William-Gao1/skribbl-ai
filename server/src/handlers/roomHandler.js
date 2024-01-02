@@ -9,7 +9,7 @@ const {
 } = require('../state')
 
 module.exports = (io) => {
-  const createRoomHandler = function (displayName, callback) {
+  const createRoomHandler = function (displayName, model, difficulty, callback) {
     const socket = this
     const { inRoom, playerId } = socket.player
 
@@ -22,9 +22,15 @@ module.exports = (io) => {
     } else if (displayName === AI_DISPLAY_NAME) {
       callback({success: false, message: "You cannot name yourself that"})
       return
-    } 
+    } else if (model !== "cnn" && model !== "rnn") {
+      callback({success: false, message: "Not a valid model"})
+      return
+    } else if (difficulty !== "easy" && difficulty !== "medium" && difficulty !== "hard") {
+      callback({success: false, message: "Not a valid difficulty level"})
+      return
+    }
 
-    const roomCode = createRoom(playerId, displayName)
+    const roomCode = createRoom(playerId, displayName, model, difficulty)
 
     socket.join(roomCode)
 

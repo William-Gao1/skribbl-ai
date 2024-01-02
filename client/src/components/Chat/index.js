@@ -14,7 +14,7 @@ const Chat = () => {
   const [messageDraft, setMessageDraft] = useState("")
 
   const { messages} = useRoomRefs()
-  const { submitMessage, outerDiv, innerDiv, dummyDiv } = useChat()
+  const { submitMessage, outerDiv, innerDiv } = useChat()
 
   const sendMessage = (e) => {
     e.preventDefault()
@@ -38,9 +38,6 @@ const Chat = () => {
               {displayName ? `${displayName}: ${message}` : <b>{message}</b>} 
             </div>
           ))}
-        </div>
-        <div style={{ float:"left", clear: "both" }}
-             ref={dummyDiv}>
         </div>
       </div>
 
