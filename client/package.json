@@ -16,6 +16,9 @@
     "socket.io-client": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "BUILD_PATH='../build' react-scripts build",
