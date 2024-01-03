@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+
+      - name: Install build client
+        run: |
+          cd client
+          npm install
+          npm run build
+
+      - name: Remove client folder
+        run: rm -rf client
+
+      - name: Push to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "skribbl-ai"
+          heroku_email: "william2010.gao@gmail.com"
