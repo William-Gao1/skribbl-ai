@@ -27,8 +27,8 @@ jobs:
         run: rm -rf client
 
       - name: Push to heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          heroku git:remote -a skribbl-ai
-          git push heroku main
+        uses: akhileshns/heroku-deploy@v3.13.14 # This is the action
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: skribbl-ai
+          heroku_email: william2010.gao@gmail.com
