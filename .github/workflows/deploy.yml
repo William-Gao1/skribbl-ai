@@ -27,7 +27,7 @@ jobs:
         run: rm -rf client
 
       - name: Push to heroku
-        uses: akhileshns/heroku-deploy@v3.13.14 # This is the action
+        uses: akhileshns/heroku-deploy@v3.12.14
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: skribbl-ai
