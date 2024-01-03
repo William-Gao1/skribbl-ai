@@ -9,9 +9,10 @@ const { playerMiddleware } = require('./src/middleware')
 
 const { startLoop } = require('./src/prediction')
 require('./src/python/python')
+
 const PORT = process.env.PORT || 3001;
 
-app.use(express.static("client/build"))
+app.use(express.static("./build"))
 
 const io = new Server(server, {
   wsEngine: require("eiows").Server,
