@@ -24,9 +24,10 @@ jobs:
 
       - name: Remove client folder
         run: rm -rf client
-      - name: Add Heroku remote
-        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/skribbl-ai.git
-      - name: Push to Heroku
+
+      - name: Push to heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          ls
+          heroku git:remote -a skribbl-ai
           git push heroku main
