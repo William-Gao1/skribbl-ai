@@ -2,9 +2,9 @@ import numpy as np
 from PIL import Image, ImageDraw
 import math
 import json
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
 
-interpreter = tf.lite.Interpreter("./server/src/python/models/cnn-64.tflite")
+interpreter = tflite.Interpreter("./server/src/python/models/cnn-64.tflite")
 interpreter.allocate_tensors()
 
 categories = sorted(json.load(open("./server/src/resources/words.json")))
