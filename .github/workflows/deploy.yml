@@ -31,3 +31,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "skribbl-ai"
           heroku_email: "william2010.gao@gmail.com"
+          justlogin: true
+        run: |
+          heroku git:remote -a skribbl-ai
