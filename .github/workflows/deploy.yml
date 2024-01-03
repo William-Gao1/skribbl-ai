@@ -24,21 +24,9 @@ jobs:
 
       - name: Remove client folder
         run: rm -rf client
-
-      - name: Login to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_EMAIL: william2010.gao@gmail.com
-        run: |
-          cat > ~/.netrc <<EOF
-            machine api.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_KEY
-            machine git.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_KEY
-          EOF
       - name: Add Heroku remote
-        run: heroku git:remote --app skribbl-ai
+        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/skribbl-ai.git
       - name: Push to Heroku
-        run: git push heroku main
+        run: |
+          ls
+          git push heroku main
