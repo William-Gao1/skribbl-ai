@@ -26,12 +26,17 @@ jobs:
         run: rm -rf client
 
       - name: Login to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.14
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "skribbl-ai"
-          heroku_email: "william2010.gao@gmail.com"
-          justlogin: true
-      - name: Push to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: william2010.gao@gmail.com
         run: |
-          heroku git:remote -a skribbl-ai
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+      - name: Add Heroku remote
+        run: heroku git:remote --app skribbl.ai
