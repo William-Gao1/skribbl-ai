@@ -18,6 +18,24 @@
 }
 
 .modelSelectButton {
+  background-color: #4d76c9;
+  border-color: #4d76c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modelSelectButton:hover {
+  background-color: #4d76c9 !important;
+  border-color: #4d76c9 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activeModelSelectButton {
+  background-color: #3c5ea3 !important;
+  border-color: #4d76c9 !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +64,24 @@
 }
 
 .difficultySelectButton {
+  background-color: #4d76c9;
+  border-color: #4d76c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.difficultySelectButton:hover {
+  background-color: #4d76c9 !important;
+  border-color: #4d76c9 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activeDifficultySelectButton {
+  background-color: #3c5ea3 !important;
+  border-color: #4d76c9 !important;
   display: flex;
   justify-content: center;
   align-items: center;

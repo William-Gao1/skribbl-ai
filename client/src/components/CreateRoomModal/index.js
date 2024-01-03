@@ -22,22 +22,20 @@ const CreateRoomModal = ({show, handleClose, createRoom}) => {
             <b className="selectModelText">Select Model:</b>
             <ButtonGroup className="modelSelection">
               <ToggleButton
-                  className="modelSelectButton"
+                  className={"cnn" === modelSelection ? "activeModelSelectButton" : "modelSelectButton"}
                   type="radio"
-                  variant="secondary"
                   checked={"cnn" === modelSelection}
                   onClick={() => setModelSelection("cnn")}
                 >
                   CNN
                 </ToggleButton>
                 <ToggleButton
-                  className="modelSelectButton"
+                  className={"rnn" === modelSelection ? "activeModelSelectButton" : "modelSelectButton"}
                   type="radio"
-                  variant="secondary"
                   checked={"rnn" === modelSelection}
                   onClick={() => setModelSelection("rnn")}
                 >
-                  RNN
+                  LSTM
                 </ToggleButton>
             </ButtonGroup>
           </div>
@@ -46,27 +44,24 @@ const CreateRoomModal = ({show, handleClose, createRoom}) => {
             <b className="selectDifficultyText">Select Difficulty:</b>
             <ButtonGroup className="difficultySelection">
               <ToggleButton
-                  className="difficultySelectButton"
+                  className={"easy" === difficultySelection ? "activeDifficultySelectButton" : "difficultySelectButton"}
                   type="radio"
-                  variant="secondary"
                   checked={"easy" === difficultySelection}
                   onClick={() => setDifficultySelection("easy")}
                 >
                   Easy
                 </ToggleButton>
                 <ToggleButton
-                  className="difficultySelectButton"
+                  className={"medium" === difficultySelection ? "activeDifficultySelectButton" : "difficultySelectButton"}
                   type="radio"
-                  variant="secondary"
                   checked={"medium" === difficultySelection}
                   onClick={() => setDifficultySelection("medium")}
                 >
                   Medium
                 </ToggleButton>
                 <ToggleButton
-                  className="difficultySelectButton"
+                  className={"hard" === difficultySelection ? "activeDifficultySelectButton" : "difficultySelectButton"}
                   type="radio"
-                  variant="secondary"
                   checked={"hard" === difficultySelection}
                   onClick={() => setDifficultySelection("hard")}
                 >
