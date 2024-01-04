@@ -4,6 +4,8 @@ Pictionary but it's humans vs AI. If the AI guesses the word before the humans d
 
 The AI that we will use will be either a CNN or a LSTM. The players will be able to choose which one from the home screen.
 
+Try it out [here](https://skribbl-ai-5e27f18747e4.herokuapp.com/).
+
 ## Run Locally
 
 To run this project locally, you will need `node.js` (v20.10 recommended). Node.js can be installed [here](https://nodejs.org/en).

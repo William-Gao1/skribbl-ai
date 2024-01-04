@@ -42,7 +42,7 @@ The same process happens at inference. The resulting image looks like:
 
 The entire process including inference is quite fast, taking an average of 5ms.
 
-_The GitHub repository for the CNN training can be found [here](https://github.com/William-Gao1/skribbl-ai)._
+_The GitHub repository for the CNN training can be found [here](https://github.com/William-Gao1/skribbl-ai-cnn)._
 
 ## Web Application:
 

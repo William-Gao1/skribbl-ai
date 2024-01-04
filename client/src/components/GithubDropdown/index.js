@@ -13,7 +13,7 @@ const GitHubDropdown = () => {
         </Dropdown.Toggle>
         <Dropdown.Menu className="repoLinkMenu">
           <Dropdown.Item target="_blank" href="https://github.com/William-Gao1/skribbl-ai" className="repoLink">Skribbl.ai Web App</Dropdown.Item>
-          <Dropdown.Item target="_blank" href="https://github.com/William-Gao1/skribbl-ai" className="repoLink">CNN Training</Dropdown.Item>
+          <Dropdown.Item target="_blank" href="https://github.com/William-Gao1/skribbl-ai-cnn" className="repoLink">CNN Training</Dropdown.Item>
           <Dropdown.Item target="_blank" href="https://github.com/William-Gao1/skribbl-ai" className="repoLink">LSTM Training</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
