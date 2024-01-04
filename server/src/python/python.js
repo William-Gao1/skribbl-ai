@@ -1,6 +1,11 @@
 const nodecallspython = require("node-calls-python");
+const { getVenvPackagesPath } = require("./addVenv")
 
 const py = nodecallspython.interpreter;
+
+const venvPackagesLocation = getVenvPackagesPath()
+
+py.addImportPath(venvPackagesLocation)
 
 const cnn_module = py.importSync("./server/src/python/scripts/preprocess_cnn.py")
 

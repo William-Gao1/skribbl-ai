@@ -1,3 +1,3 @@
-numpy
-tflite-runtime
-pillow
+numpy==1.26.3
+pillow==10.2.0
+tflite-runtime==2.14.0
