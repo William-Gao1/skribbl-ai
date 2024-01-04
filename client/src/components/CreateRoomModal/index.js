@@ -8,7 +8,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import './CreateRoomModal.css'
 
 const CreateRoomModal = ({show, handleClose, createRoom}) => {
-  const [modelSelection, setModelSelection] = useState('cnn');
+  const [modelSelection, setModelSelection] = useState('rnn');
   const [difficultySelection, setDifficultySelection] = useState('easy');
 
 
@@ -22,20 +22,20 @@ const CreateRoomModal = ({show, handleClose, createRoom}) => {
             <b className="selectModelText">Select Model:</b>
             <ButtonGroup className="modelSelection">
               <ToggleButton
+                  className={"rnn" === modelSelection ? "activeModelSelectButton" : "modelSelectButton"}
+                  type="radio"
+                  checked={"rnn" === modelSelection}
+                  onClick={() => setModelSelection("rnn")}
+                >
+                LSTM
+              </ToggleButton>
+              <ToggleButton
                   className={"cnn" === modelSelection ? "activeModelSelectButton" : "modelSelectButton"}
                   type="radio"
                   checked={"cnn" === modelSelection}
                   onClick={() => setModelSelection("cnn")}
                 >
                   CNN
-                </ToggleButton>
-                <ToggleButton
-                  className={"rnn" === modelSelection ? "activeModelSelectButton" : "modelSelectButton"}
-                  type="radio"
-                  checked={"rnn" === modelSelection}
-                  onClick={() => setModelSelection("rnn")}
-                >
-                  LSTM
                 </ToggleButton>
             </ButtonGroup>
           </div>

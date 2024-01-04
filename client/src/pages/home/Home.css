@@ -25,14 +25,14 @@
 
 .homeActionsButtonGroup {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 1em;
 }
 
 .createRoomButton {
   width: 100%;
-  margin-top: 1em;
   height: 3em;
   background-color: darkturquoise;
   border-color: darkturquoise;
@@ -41,7 +41,6 @@
 
 .joinRoomButton {
   width: 100%;
-  margin-top: 1em;
   height: 3em;
   background-color: mediumslateblue;
   border-color: mediumslateblue;

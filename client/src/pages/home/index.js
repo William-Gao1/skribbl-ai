@@ -12,8 +12,11 @@ import { useRoomRefs } from '../room/hooks/useRoomRefs';
 import JoinRoomModal from '../../components/JoinRoomModal';
 import CreateRoomModal from '../../components/CreateRoomModal';
 import Logo from '../../components/Logo';
+import GitHubDropdown from '../../components/GithubDropdown';
 
 import "./Home.css"
+import Info from '../../components/Info';
+import HowToPlay from '../../components/HowToPlay';
 
 const Home = () => {
   const { userNameRef } = useRoomRefs()
@@ -37,9 +40,9 @@ const Home = () => {
     <div className="homeContainer">
       <JoinRoomModal show={joinRoomModalOpen} handleClose={() => setJoinRoomModalOpen(false)} joinRoom={joinRoomHandler}/>
       <CreateRoomModal show={createRoomModalOpen} handleClose={() => setCreateRoomModalOpen(false)} createRoom={createRoomHandler}/>
-
+      <HowToPlay />
       <div className="logoControlsContainer">
-        <Logo />  
+        <Logo />
         <div className="homeControlsContainer">
           <InputGroup>
             <Form.Control
@@ -63,6 +66,10 @@ const Home = () => {
             <Button onClick={() => setJoinRoomModalOpen(true)} className="joinRoomButton">
               Join Room
             </Button>
+          </InputGroup>
+          <InputGroup className="homeActionsButtonGroup">
+            <GitHubDropdown />
+            <Info />
           </InputGroup>
         </div>
       </div>

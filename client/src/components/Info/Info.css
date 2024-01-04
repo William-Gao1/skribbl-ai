@@ -1,0 +1,25 @@
+.infoButton {
+  height: 4em;
+  margin-left: 1em;
+  width: 10em;
+  background-color: grey;
+  border-color: grey;
+}
+
+.infoButton:hover {
+  background-color: rgb(72, 70, 70);
+  border-color: rgb(72, 70, 70);
+}
+
+.infoButton:active {
+  background-color: rgb(72, 70, 70) !important;
+  border-color: rgb(72, 70, 70) !important;
+}
+
+.infoModalContent {
+  width: 50em;
+}
+
+.infoModal {
+  transform: translate(-8%, 0);
+}

@@ -1,0 +1,40 @@
+.howToPlayButton {
+  position: absolute;
+  right: 2em;
+  top: 1em;
+  height: 3em;
+  margin-left: 1em;
+  width: 10em;
+  background-color: grey;
+  border-color: grey;
+}
+
+.howToPlayButton:hover {
+  background-color: rgb(72, 70, 70);
+  border-color: rgb(72, 70, 70);
+}
+
+.howToPlayButton:active {
+  background-color: rgb(72, 70, 70) !important;
+  border-color: rgb(72, 70, 70) !important;
+}
+
+.instructions {
+  padding: 1em 2em;
+  max-height: 30em;
+  overflow: scroll;
+}
+
+.instructionModalContent {
+  width: 50em;
+}
+
+.instructionModal {
+  transform: translate(-8%, 0);
+}
+
+.instructions img {
+  display: block;
+  margin: 0 auto;
+  width: 20em;
+}

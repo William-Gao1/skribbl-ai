@@ -1,0 +1,47 @@
+.githubDropdown {
+  background-color: #1c1f24;
+  border-color: #1c1f24;
+  padding: 0.5em 1em;
+}
+
+.githubDropdown:hover {
+  background-color: #3b3d3f;
+  border-color: #3b3d3f;
+}
+
+.githubDropdown:active {
+  background-color: #3b3d3f !important;
+  border-color: #3b3d3f !important;
+}
+
+.repoLinkMenu {
+  background-color: #1c1f24;
+}
+
+.repoLinkMenu:first-child {
+  border-radius: 20px;
+}
+
+.repoLink {
+  background-color: #1c1f24;
+  color: white;
+  height: 3em;
+  display: flex;
+  align-items: center;
+}
+
+.repoLink:hover {
+  background-color: #373c43;
+  color: white;
+}
+
+.githubLogo {
+  width: 3em;
+  border-radius: 10px;
+  padding: 0.5em;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

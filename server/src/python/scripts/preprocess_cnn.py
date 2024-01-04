@@ -23,6 +23,8 @@ def strokes_to_bitmap(strokes, width, height, stroke_width):
 
 
 def get_bbox(strokes):
+    if len(strokes) == 0:
+        return 0, 0, 0, 0
     max_x = 0
     min_x = strokes[0][0][0]
     max_y = 0
@@ -38,6 +40,8 @@ def get_bbox(strokes):
 
 
 def get_img_from_strokes(strokes, target_shape=(28, 28)):
+    if len(strokes) == 0:
+        return np.zeros(target_shape)
     min_y, max_y, min_x, max_x = get_bbox(strokes)
 
     stroke_width = math.ceil(
@@ -100,3 +104,8 @@ def get_prediction(image_data):
     prediction = interpreter.get_tensor(output_details[0]["index"])[0]
 
     return {cat: value for cat, value in zip(categories, prediction)}
+
+
+# warm-up call since first call is always slow for
+# some reason
+get_prediction([])
