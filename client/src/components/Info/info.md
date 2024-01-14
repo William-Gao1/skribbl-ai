@@ -26,7 +26,7 @@ After training, the models are compressed and simplified before deployment using
 
 Work in progress
 
-_The GitHub repository for the LSTM training can be found [here](https://github.com/William-Gao1/skribbl-ai)._
+_The GitHub repository for the LSTM training can be found [here](https://github.com/charlie-liuu/skribbl-ai-lstm)._
 
 ### CNN:
 
